@@ -30,7 +30,8 @@ def translate_column(
 
             return idx, text
 
-        translated = translator.translate(text)
+        #translated = translator.translate(text)
+        translated = translate_value(text, translator)
 
         checkpoint.mark_done(dataset_name, column, idx)
 
@@ -52,6 +53,16 @@ def translate_column(
         results[idx] = translated
 
     return results
+
+def translate_value(value, translator):
+    if isinstance(value, list):
+        return [translate_value(v, translator) for v in value]
+
+    elif isinstance(value, str):
+        return translator.translate(value)
+
+    else:
+        return value
 
 def run(
     input_path,
