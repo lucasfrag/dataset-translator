@@ -77,6 +77,7 @@ def run(
     force=False,
     reset_cache=False,
     reset_checkpoint=False,
+    debug=False,
 ):
     
     if force:
@@ -109,6 +110,7 @@ def run(
         target_lang=target_lang,
         source_lang=source_lang,
         retry_config=retry_config,
+        debug=debug,
     )
 
     print(f"Using {workers} workers")

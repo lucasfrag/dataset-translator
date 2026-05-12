@@ -19,6 +19,7 @@ def main():
         force=args.force,
         reset_cache=args.reset_cache,
         reset_checkpoint=args.reset_checkpoint,
+        debug=args.debug,
     )
 
 

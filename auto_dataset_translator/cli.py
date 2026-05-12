@@ -88,4 +88,10 @@ def parse_args():
         action="store_true",
     )    
 
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Show translations while processing"
+    )
+
     return parser.parse_args()

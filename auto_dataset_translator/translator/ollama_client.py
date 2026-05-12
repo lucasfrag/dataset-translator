@@ -15,12 +15,13 @@ class OllamaClient:
         target_lang,
         source_lang="English",
         retry_config=None,
+        debug=False,
     ):
 
         self.model = model
         self.target_lang = target_lang
         self.source_lang = source_lang or "English"
-
+        self.debug = debug
         self.cache = TranslationCache()
 
         self.retry_config = retry_config or RetryConfig()
@@ -130,6 +131,10 @@ class OllamaClient:
         )
 
         if cached:
+            if self.debug:
+                print("\n[CACHE HIT]")
+                print(f"SOURCE: {text}")
+                print(f"TARGET: {cached}")
             return cached
 
         # RETRY TRANSLATION
@@ -137,6 +142,11 @@ class OllamaClient:
             lambda: self._translate_api(text),
             self.retry_config,
         )
+
+        if self.debug:
+            print("\n[TRANSLATED]")
+            print(f"SOURCE: {text}")
+            print(f"TARGET: {translated}")
 
         # SAVE CACHE
         self.cache.set(
