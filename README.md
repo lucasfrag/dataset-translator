@@ -63,6 +63,8 @@ python main.py \
   --columns text title description \
   --model llama3.1:8b \
   --target-lang Portuguese
+  --host http://localhost:11435
+  --debug
 ```
 
 ---
