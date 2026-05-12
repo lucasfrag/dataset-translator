@@ -20,6 +20,7 @@ def main():
         reset_cache=args.reset_cache,
         reset_checkpoint=args.reset_checkpoint,
         debug=args.debug,
+        host=args.host,
     )
 
 

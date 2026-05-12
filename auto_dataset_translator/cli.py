@@ -94,4 +94,11 @@ def parse_args():
         help="Show translations while processing"
     )
 
+    parser.add_argument(
+        "--host",
+        type=str,
+        default="http://127.0.0.1:11434",
+        help="Ollama server host"
+    )
+
     return parser.parse_args()

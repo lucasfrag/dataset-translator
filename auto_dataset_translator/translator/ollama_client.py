@@ -1,4 +1,4 @@
-import ollama
+from ollama import Client
 
 from auto_dataset_translator.translator.cache import TranslationCache
 from auto_dataset_translator.translator.retry import (
@@ -16,6 +16,7 @@ class OllamaClient:
         source_lang="English",
         retry_config=None,
         debug=False,
+        host="http://localhost:11434",
     ):
 
         self.model = model
@@ -23,8 +24,11 @@ class OllamaClient:
         self.source_lang = source_lang or "English"
         self.debug = debug
         self.cache = TranslationCache()
-
+        self.host = host
         self.retry_config = retry_config or RetryConfig()
+
+        self.client = Client(self.host)
+        print(f"Initialized Ollama client with host: {self.host}")
 
 
 
@@ -75,7 +79,7 @@ class OllamaClient:
 
         messages = self._build_messages(text)
 
-        response = ollama.chat(
+        response = self.client.chat(
             model=self.model,
             messages=messages,
             options={

@@ -78,6 +78,7 @@ def run(
     reset_cache=False,
     reset_checkpoint=False,
     debug=False,
+    host="http://localhost:11434",
 ):
     
     if force:
@@ -111,6 +112,7 @@ def run(
         source_lang=source_lang,
         retry_config=retry_config,
         debug=debug,
+        host=host,
     )
 
     print(f"Using {workers} workers")
