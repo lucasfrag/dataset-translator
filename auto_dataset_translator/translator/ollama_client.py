@@ -99,6 +99,7 @@ class OllamaClient:
         response = self.client.chat(
             model=self.model,
             messages=messages,
+            think=False,
             options={
                 "temperature": 0,
                 "top_p": 1,

@@ -3,3 +3,6 @@ __pycache__/
 dataset_*.csv
 translation_cache.db
 checkpoint.db
+
+*translations.db
+*checkpoint.json

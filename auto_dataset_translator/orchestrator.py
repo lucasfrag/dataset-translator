@@ -31,8 +31,11 @@ def translate_column(
 
         idx, text = args
 
+        #if checkpoint.is_done(dataset_name, column, idx):
+        #    return idx, text
         if checkpoint.is_done(dataset_name, column, idx):
-            return idx, text
+            translated = translate_value(text, translator)
+            return idx, translated
 
         translated = translate_value(text, translator)
 
